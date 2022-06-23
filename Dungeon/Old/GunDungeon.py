@@ -30,6 +30,17 @@ if True: # 固定宣告
 
 if True: # 統一動作（修武器、死亡）
 
+    def Enter():
+        """ 抓到入場圖片，按G入場 """
+        admissionPic_hwnd(hwnd)
+        time.sleep(randomDelay(1.5, 2.0))
+        pressKey("G")
+        time.sleep(randomDelay(0.4, 0.5))
+        pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        pressMouse(1533, 864, 0.2)
+        time.sleep(randomDelay(0.9, 1.1))
+        pressKey("enter")
+
     def Repair():
         """ 叫出寵物界面 """
         pyautogui.keyDown('alt')
@@ -107,14 +118,7 @@ if __name__ == "__main__":
         while True:
 
             """ 抓到入場圖片，按G入場 """
-            admissionPic_hwnd(hwnd)
-            time.sleep(randomDelay(1.5, 2.0))
-            pressKey("G")
-            time.sleep(randomDelay(0.4, 0.5))
-            pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到場地正中間
-            pressMouse(1533, 864, 0.2)
-            time.sleep(randomDelay(0.9, 1.1))
-            pressKey("enter")
+            Enter()
             time.sleep(randomDelay(3.0, 3.5))
             dungeonPic_hwnd(hwnd)
             time.sleep(randomDelay(1.5, 2.0))
@@ -131,7 +135,6 @@ if __name__ == "__main__":
             time.sleep(randomDelay(2.5, 2.8))
 
             """ 偵測是否死亡 """
-            
             if Dead():
                 time.sleep(randomDelay(5.0, 5.5))
                 deadExit()

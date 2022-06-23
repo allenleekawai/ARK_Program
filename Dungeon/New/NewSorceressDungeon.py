@@ -4,9 +4,10 @@ from imagesearch_org import *
 
 # Search for the logo on the whole screen
 # note that the search only works on your primary screen
-admissionPic    = "enter.png"
-dungeonPic      = "exit.png"
-deadPic         = "dead.png"
+outsidePic      = str(pathlib.Path(__file__).parent.absolute()) + "\out.png"
+admissionPic    = str(pathlib.Path(__file__).parent.absolute()) + "\enter.png"
+dungeonPic      = str(pathlib.Path(__file__).parent.absolute()) + "\exit.png"
+deadPic         = str(pathlib.Path(__file__).parent.absolute()) + "\dead.png"
 
 if True: # 固定宣告
 
@@ -28,17 +29,28 @@ if True: # 固定宣告
         time.sleep(randomDelay(0.1, 0.2))
         pyautogui.mouseUp(x, y)
 
-if True: # 統一動作（修武器、死亡）
+if True: # 統一動作（修武器、死亡、入場）
 
-    def Enter():
-        """ 抓到入場圖片，按G入場 """
+    def EnterAnywhere():
+        """ 叫出綜合副本 """
+        pyautogui.keyDown('alt')
+        time.sleep(randomDelay(0.1, 0.2))
+        pressKey("Q")
+        time.sleep(randomDelay(0.1, 0.2))
+        pyautogui.keyUp('alt')
+        time.sleep(randomDelay(0.3, 0.5))
+        """ 確認綜合副本介面出現 """
         admissionPic_hwnd(hwnd)
-        time.sleep(randomDelay(1.5, 2.0))
-        pressKey("G")
-        time.sleep(randomDelay(0.4, 0.5))
-        pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        time.sleep(randomDelay(0.3, 0.5))
+        pyautogui.moveTo(852, 283, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到入場按鈕
+        """ 點擊地牢入場 """
+        pressMouse(852, 283, 0.2)
+        time.sleep(randomDelay(0.5, 0.7))
+        pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到入場按鈕
+        """ 移到入場按鈕並點擊 """
         pressMouse(1533, 864, 0.2)
         time.sleep(randomDelay(0.9, 1.1))
+        """ 按下Enter入場 """
         pressKey("enter")
 
     def Repair():
@@ -77,8 +89,21 @@ if True: # 統一動作（修武器、死亡）
         pressKey("enter")
 
 if True: # Find Pic
+    def outsidePic_hwnd(hwnd):
+        counter = 0
+        pos = imagesearch_hwnd(outsidePic, hwnd)
+        while pos[0] == -1:
+            print(outsidePic + " not found, waiting")
+            time.sleep(0.1)
+            pos = imagesearch_hwnd(outsidePic, hwnd)
+            counter += 1
+            if counter == 100:
+                break
+            print(counter)
+        print("Admission found ", pos[0], pos[1])
+        return pos
 
-    def admissionPic_hwnd(hwnd): # 找尋入場可以按G的照片
+    def admissionPic_hwnd(hwnd): # 找尋綜合副本渾沌地牢的按鈕
         counter = 0
         pos = imagesearch_hwnd(admissionPic, hwnd)
         while pos[0] == -1:
@@ -177,7 +202,9 @@ if __name__ == "__main__":
         while True:
 
             """ 抓到入場圖片，按G入場 """
-            Enter()
+            outsidePic_hwnd(hwnd)
+            time.sleep(randomDelay(1.0, 1.3))
+            EnterAnywhere()
             time.sleep(randomDelay(3.0, 3.5))
             dungeonPic_hwnd(hwnd)
             time.sleep(randomDelay(1.5, 2.0))
@@ -248,9 +275,10 @@ if __name__ == "__main__":
                     time.sleep(600)
 
         time.sleep(randomDelay(3.0, 3.5))
-        admissionPic_hwnd(hwnd)
-        time.sleep(randomDelay(2.0, 2.5))
+        outsidePic_hwnd(hwnd)
+        time.sleep(randomDelay(1.0, 1.3))
         Repair()
+        time.sleep(randomDelay(1.0, 1.3))
 
 """
 # VK_Key_Code : http://www.kbdedit.com/manual/low_level_vk_list.html

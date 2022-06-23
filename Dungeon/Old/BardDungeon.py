@@ -28,33 +28,18 @@ if True: # 固定宣告
         time.sleep(randomDelay(0.1, 0.2))
         pyautogui.mouseUp(x, y)
 
-if True: # 技能按鍵宣告
-
-    def FE():
-        pressKey("F")
-        time.sleep(randomDelay(0.1, 0.2))
-        pressKey("F")
-        time.sleep(randomDelay(1.3, 2.3))
-        pressKey("E")
-        time.sleep(randomDelay(0.1, 0.2))
-        pressKey("E")
-
-    def WR():
-        pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
-        pressKey("W")
-        time.sleep(randomDelay(0.2, 0.3))
-        pressKey("W")
-        time.sleep(randomDelay(0.2, 0.3))
-        pressKey("W")
-        time.sleep(randomDelay(0.1, 0.2))
-        pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
-        pressKey("R")
-        time.sleep(randomDelay(0.2, 0.3))
-        pressKey("R")
-        time.sleep(randomDelay(0.2, 0.3))
-        pressKey("R")
-
 if True: # 統一動作（修武器、死亡）
+
+    def Enter():
+        """ 抓到入場圖片，按G入場 """
+        admissionPic_hwnd(hwnd)
+        time.sleep(randomDelay(1.5, 2.0))
+        pressKey("G")
+        time.sleep(randomDelay(0.4, 0.5))
+        pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        pressMouse(1533, 864, 0.2)
+        time.sleep(randomDelay(0.9, 1.1))
+        pressKey("enter")
 
     def Repair():
         """ 叫出寵物界面 """
@@ -121,6 +106,32 @@ if True: # Find Pic
         print("Dungeon inside found ", pos[0], pos[1])
         return pos
 
+if True: # 技能按鍵宣告
+
+    def FE():
+        pressKey("F")
+        time.sleep(randomDelay(0.1, 0.2))
+        pressKey("F")
+        time.sleep(randomDelay(1.3, 2.3))
+        pressKey("E")
+        time.sleep(randomDelay(0.1, 0.2))
+        pressKey("E")
+
+    def WR():
+        pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        pressKey("W")
+        time.sleep(randomDelay(0.2, 0.3))
+        pressKey("W")
+        time.sleep(randomDelay(0.2, 0.3))
+        pressKey("W")
+        time.sleep(randomDelay(0.1, 0.2))
+        pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        pressKey("R")
+        time.sleep(randomDelay(0.2, 0.3))
+        pressKey("R")
+        time.sleep(randomDelay(0.2, 0.3))
+        pressKey("R")
+
 if __name__ == "__main__":
     runCounter  = 0
     deadCounter = 0
@@ -133,14 +144,7 @@ if __name__ == "__main__":
         while True:
 
             """ 抓到入場圖片，按G入場 """
-            admissionPic_hwnd(hwnd)
-            time.sleep(randomDelay(1.5, 2.0))
-            pressKey("G")
-            time.sleep(randomDelay(0.4, 0.5))
-            pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到場地正中間
-            pressMouse(1533, 864, 0.2)
-            time.sleep(randomDelay(0.9, 1.1))
-            pressKey("enter")
+            Enter()
             time.sleep(randomDelay(3.0, 3.5))
             dungeonPic_hwnd(hwnd)
             time.sleep(randomDelay(1.5, 2.0))
