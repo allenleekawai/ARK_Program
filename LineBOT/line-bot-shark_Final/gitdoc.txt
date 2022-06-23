@@ -1,0 +1,9 @@
+git config --global user.name "Allen Lee"
+git config --global user.email allenleekawai@gmail.com
+git init
+heroku git:remote -a line-bot-shark
+git add .
+git commit -m "Add code"
+git push -f heroku master
+
+heroku logs --tail --app line-bot-shark
