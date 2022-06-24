@@ -147,15 +147,15 @@ if __name__ == "__main__":
             pressKey("X")
             time.sleep(randomDelay(0.3, 0.5))
             pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
-            pressKey("Q")
+            pressKey("W")
             time.sleep(randomDelay(0.5, 0.8))
 
             pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
-            pressKey("W")
+            pressKey("E")
             time.sleep(randomDelay(0.5, 0.8))
-            pressKey("W")
+            pressKey("E")
             time.sleep(randomDelay(0.5, 0.8))
-            pressKey("W")
+            pressKey("E")
             time.sleep(randomDelay(1.0, 1.3))
 
             pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
