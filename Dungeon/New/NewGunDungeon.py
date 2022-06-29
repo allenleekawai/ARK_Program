@@ -4,10 +4,11 @@ from imagesearch_org import *
 
 # Search for the logo on the whole screen
 # note that the search only works on your primary screen
-outsidePic      = str(pathlib.Path(__file__).parent.absolute()) + "\out.png"
-admissionPic    = str(pathlib.Path(__file__).parent.absolute()) + "\enter.png"
-dungeonPic      = str(pathlib.Path(__file__).parent.absolute()) + "\exit.png"
-deadPic         = str(pathlib.Path(__file__).parent.absolute()) + "\dead.png"
+outsidePic      = str(pathlib.Path(__file__).parent) + "\out.png"
+admissionPic    = str(pathlib.Path(__file__).parent) + "\enter.png"
+dungeonPic      = str(pathlib.Path(__file__).parent) + "\exit.png"
+deadPic         = str(pathlib.Path(__file__).parent) + "\dead.png"
+gunPic          = str(pathlib.Path(__file__).parent) + "\gun.png"
 
 if True: # 固定宣告
 
@@ -131,6 +132,16 @@ if True: # Find Pic
         print("Dungeon inside found ", pos[0], pos[1])
         return pos
 
+    def gunPic_hwnd(hwnd): # 找尋入場後的退出鈕
+        pos = imagesearch_hwnd(gunPic, hwnd)
+        while pos[0] == -1:
+            print(gunPic + " not found, waiting")
+            pressKey("Z")
+            time.sleep(randomDelay(0.1, 0.2))
+            pos = imagesearch_hwnd(gunPic, hwnd)
+        print("Gun found ", pos[0], pos[1])
+        return pos
+
 if __name__ == "__main__":
     runCounter  = 0
     deadCounter = 0
@@ -142,9 +153,13 @@ if __name__ == "__main__":
 
         while True:
 
+           
             """ 抓到入場圖片，按G入場 """
             outsidePic_hwnd(hwnd)
             time.sleep(randomDelay(1.0, 1.3))
+            """ 切換到正確的槍 """
+            gunPic_hwnd(hwnd)
+            time.sleep(randomDelay(0.2, 0.3))
             EnterAnywhere()
             time.sleep(randomDelay(3.0, 3.5))
             dungeonPic_hwnd(hwnd)
@@ -175,15 +190,15 @@ if __name__ == "__main__":
             time.sleep(randomDelay(0.3, 0.5))
             pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
             pressKey("W")
-            time.sleep(randomDelay(0.5, 0.8))
+            time.sleep(randomDelay(0.5, 0.7))
 
             pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
             pressKey("E")
-            time.sleep(randomDelay(0.5, 0.8))
+            time.sleep(randomDelay(0.5, 0.7))
             pressKey("E")
-            time.sleep(randomDelay(0.5, 0.8))
+            time.sleep(randomDelay(0.5, 0.7))
             pressKey("E")
-            time.sleep(randomDelay(1.0, 1.3))
+            time.sleep(randomDelay(0.2, 0.4))
 
             pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
             pressKey("R")
@@ -191,7 +206,7 @@ if __name__ == "__main__":
             pressKey("R")
             time.sleep(randomDelay(0.2, 0.5))
             pressKey("R")
-            time.sleep(randomDelay(7.6, 7.8))
+            time.sleep(randomDelay(6.8, 7.0))
 
             """ 偵測是否死亡 """
             if Dead():
@@ -204,7 +219,7 @@ if __name__ == "__main__":
             pressKey("X")
             time.sleep(randomDelay(0.3, 0.5))
             pressKey("S")
-            time.sleep(randomDelay(7.5, 7.8))
+            time.sleep(randomDelay(6.8, 7.0))
 
             """ 偵測是否死亡 """
             if Dead():
