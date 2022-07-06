@@ -34,7 +34,6 @@ if True: # 固定宣告
         pyautogui.moveTo(x, y, duration=Delay, tween=pyautogui.easeInOutQuad)
         time.sleep(randomDelay(0.2, 0.3))
         pyautogui.mouseDown(x, y, button='right')
-        time.sleep(randomDelay(0.1, 0.2))
         pyautogui.mouseUp(x, y, button='right')
 
 if True: # 統一動作（修武器、死亡、入場）

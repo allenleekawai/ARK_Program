@@ -4,10 +4,10 @@ from ImageSearch_org import *
 
 # Search for the logo on the whole screen
 # note that the search only works on your primary screen
-admissionPic    = "fish.png"
-fishPic         = "fish1.png"
+admissionPic    = str(pathlib.Path(__file__).parent.absolute()) + "/fish.png"
+fishPic         = str(pathlib.Path(__file__).parent.absolute()) + "/fish1.png"
         
-# Random
+# RandomA
 def randomDelay(Sec, toSec):
     return round(random.uniform(Sec, toSec), random.randint(2, 5))
 
