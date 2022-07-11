@@ -49,13 +49,13 @@ if True: # 統一動作（修武器、死亡、入場）
         """ 確認綜合副本介面出現 """
         admissionPic_hwnd(hwnd)
         time.sleep(randomDelay(0.3, 0.5))
-        pyautogui.moveTo(852, 283, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到入場按鈕
+        pyautogui.moveTo(1180, 285, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到入場按鈕
         """ 點擊地牢入場 """
-        pressMouse(852, 283, 0.2)
+        pressMouse(1180, 285, 0.2)
         time.sleep(randomDelay(0.5, 0.7))
-        pyautogui.moveTo(1533, 864, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到入場按鈕
+        pyautogui.moveTo(1858, 860, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到入場按鈕
         """ 移到入場按鈕並點擊 """
-        pressMouse(1533, 864, 0.2)
+        pressMouse(1858, 860, 0.2)
         time.sleep(randomDelay(0.9, 1.1))
         """ 按下Enter入場 """
         pressKey("enter")
@@ -69,16 +69,16 @@ if True: # 統一動作（修武器、死亡、入場）
         pyautogui.keyUp('alt')
         time.sleep(randomDelay(3.0, 3.5))
         """ 點擊修理工具 """
-        pressMouse(1252, 689, 0.2)
+        pressMouse(1575, 690, 0.2)
         time.sleep(randomDelay(0.3, 0.4))
         """ 點擊修理全部 """
-        pressMouse(1090, 682, 0.2)
+        pressMouse(1380, 680, 0.2)
         time.sleep(randomDelay(0.3, 0.4))
         """ 點擊退出 """
-        pressMouse(1790, 1023, 0.2)
+        pressMouse(2430, 1023, 0.2)
         time.sleep(randomDelay(1.5, 2.0))
         """ 關閉寵物界面 """
-        pressMouse(1379, 205, 0.2)
+        pressMouse(1700, 205, 0.2)
 
     def Dead():
         global deadCounter
@@ -91,7 +91,7 @@ if True: # 統一動作（修武器、死亡、入場）
             return True
 
     def deadExit():
-        pressMouse(1373, 480, 0.2)
+        pressMouse(1700, 480, 0.2)
         time.sleep(randomDelay(0.8, 1.0))
         pressKey("enter")
 
@@ -141,7 +141,7 @@ if True: # Find Pic
 if True: # 技能按鍵宣告
 
     def EW():
-        pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        pyautogui.moveTo(1280, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
         pressKey("E")
         time.sleep(randomDelay(0.1, 0.2))
         pressKey("E")
@@ -151,7 +151,7 @@ if True: # 技能按鍵宣告
         pressKey("W")
 
     def F():
-        pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+        pyautogui.moveTo(1280, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
         pyautogui.keyDown('F')
         time.sleep(randomDelay(2.8, 3.0))
         pyautogui.keyUp('F')
@@ -176,9 +176,9 @@ if __name__ == "__main__":
             time.sleep(randomDelay(1.5, 2.0))
 
             """ 入場後普攻，觸發怪物生成 """
-            pyautogui.moveTo(958, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
+            pyautogui.moveTo(1280, 528, duration=randomDelay(0.1, 0.2), tween=pyautogui.easeInOutQuad) # 移到場地正中間
             time.sleep(randomDelay(0.1, 0.2))
-            pressMouseRight(958, 528, 0.1)
+            pressMouseRight(1280, 528, 0.1)
             time.sleep(randomDelay(8.0, 8.2))
 
             """ 第一組 EW R """
@@ -216,7 +216,7 @@ if __name__ == "__main__":
                 break
             
             """ 點選退出 > Enter """
-            pressMouse(129, 284, 0.2)
+            pressMouse(130, 284, 0.2)
             time.sleep(randomDelay(0.4, 0.5))
             pressKey("enter")
 
