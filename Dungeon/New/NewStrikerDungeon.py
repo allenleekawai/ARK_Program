@@ -165,7 +165,7 @@ if __name__ == "__main__":
 
     while True:
 
-        while True:
+        for i in range(66):
 
             """ 抓到入場圖片，按G入場 """
             outsidePic_hwnd(hwnd)
