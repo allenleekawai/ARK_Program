@@ -4,10 +4,10 @@ from imagesearch_org import *
 
 # Search for the logo on the whole screen
 # note that the search only works on your primary screen
-outsidePic      = str(pathlib.Path(__file__).parent.absolute()) + "\out.png"
-admissionPic    = str(pathlib.Path(__file__).parent.absolute()) + "\enter.png"
-dungeonPic      = str(pathlib.Path(__file__).parent.absolute()) + "\exit.png"
-deadPic         = str(pathlib.Path(__file__).parent.absolute()) + "\dead.png"
+outsidePic      = "out.png"
+admissionPic    = "enter.png"
+dungeonPic      = "exit.png"
+deadPic         = "dead.png"
 
 if True: # 固定宣告
 
