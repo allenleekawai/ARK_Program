@@ -70,17 +70,22 @@ if __name__ == "__main__":
 
     time.sleep(3)
     hwnd = FindWindow_bySearch("LOST ARK")
- 
+    VK_KEY_A = 0x41
+
     while True:
 
         for i in range(40):
             """ 按A拋竿 """
             print("---------- Reload ----------")
             pyautogui.moveTo(1178, 227, duration=randomDelay(0.2, 0.3), tween=pyautogui.easeInOutQuad) # 移到水中
-            pressKey("A")
+            win32gui.PostMessage(hwnd, win32con.WM_KEYDOWN, VK_KEY_A, 0)
+            time.sleep(0.1)
+            win32gui.PostMessage(hwnd, win32con.WM_KEYUP, VK_KEY_A, 0)
             time.sleep(randomDelay(1.0, 1.5))
-            fishPic_hwnd(hwnd)  
-            pressKey("A")  
+            fishPic_hwnd(hwnd)
+            win32gui.PostMessage(hwnd, win32con.WM_KEYDOWN, VK_KEY_A, 0)
+            time.sleep(0.1)
+            win32gui.PostMessage(hwnd, win32con.WM_KEYUP, VK_KEY_A, 0)
             time.sleep(randomDelay(6.5, 6.6))
 
             runCounter = runCounter + 1
