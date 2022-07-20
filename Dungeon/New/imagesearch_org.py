@@ -4,7 +4,6 @@ import re
 import cv2
 import time
 import random
-import pathlib
 import pyautogui
 import numpy as np
 

@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import pathlib
 from imagesearch_org import *
 
 # Search for the logo on the whole screen
